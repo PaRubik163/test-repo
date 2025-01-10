@@ -105,6 +105,51 @@ bool full_size_Green_and_Red()
 }
 
 
+
+bool body_size_green()
+{
+  Candle first = {10.5, 0 , 0, 20.8};
+
+  double size_body = first.body_size();
+
+  if (size_body == 10.3)
+  {
+    return true;
+  }
+  return false;
+}
+
+bool body_size_red()
+{
+  Candle second = {20.8, 0, 0, 10.5};
+
+  double size_body = second.body_size();
+
+  if (size_body == 10.3)
+  {
+    return true;
+  }
+  return false;
+}
+
+bool body_size_negative_nums()
+{
+  Candle third = {-30, 0 , 0, 20};
+  Candle fourth = {30, 0, 0, -20};
+
+  double size_body = third.body_size();
+  double size_body2 = fourth.body_size();
+
+  if (size_body == 50 && size_body2 == 50)
+  {
+    return true;
+  }
+  return false;
+
+}
+
+
+
 void initTests()
 {
   tests.push_back(body_contains_isgreen);
@@ -118,6 +163,11 @@ void initTests()
   tests.push_back(full_size_isgreen);
   tests.push_back(full_size_isred);
   tests.push_back(full_size_Green_and_Red);
+
+  tests.push_back(body_size_green);
+  tests.push_back(body_size_red);
+  tests.push_back(body_size_negative_nums);
+
 }
 
 int launchTests()
