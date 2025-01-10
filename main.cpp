@@ -37,11 +37,45 @@ bool body_contains_not_in_green()
 
 
 
+bool contains_isgreen()
+{
+  Candle first = {0, 20, 10, 0};
+
+  return first.contains(10)
+  && first.contains(15)
+  && first.contains(20);
+}
+
+bool contains_isred()
+{
+  Candle second = {0, 10, -20, 0};
+
+  return second.contains(-20)
+  && second.contains(10)
+  && second.contains(1);
+}
+
+bool contains_not_in_diapazon()
+{
+  Candle third = {0, 30, 10, 0};
+  return !third.contains(30.9999)
+  && !third.contains(9.99999)
+  && !third.contains(-10.123456);
+
+}
+
+
+
+
 void initTests()
 {
   tests.push_back(body_contains_isgreen);
   tests.push_back(body_contains_isred);
   tests.push_back(body_contains_not_in_green);
+
+  tests.push_back(contains_isgreen);
+  tests.push_back(contains_isred);
+  tests.push_back(contains_not_in_diapazon);
 
 }
 
