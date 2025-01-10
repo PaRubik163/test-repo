@@ -65,6 +65,44 @@ bool contains_not_in_diapazon()
 }
 
 
+bool full_size_isgreen()
+{
+  Candle first = {0, 20, 10, 0};
+  
+  double size = first.full_size();
+
+  if (size == 10)
+  {
+    return true;
+  }
+  return false;
+}
+
+bool full_size_isred()
+{
+  Candle second = {0, -10, -30, 0};
+
+  double size = second.full_size();
+
+  if (size == 20)
+  {
+    return true;
+  }
+  return false;
+}
+
+bool full_size_Green_and_Red()
+{
+  Candle third = {0, 20, -20, 0};
+
+  double size = third.full_size();
+
+  if (size == 40)
+  {
+    return true;
+  }
+  return false;
+}
 
 
 void initTests()
@@ -77,6 +115,9 @@ void initTests()
   tests.push_back(contains_isred);
   tests.push_back(contains_not_in_diapazon);
 
+  tests.push_back(full_size_isgreen);
+  tests.push_back(full_size_isred);
+  tests.push_back(full_size_Green_and_Red);
 }
 
 int launchTests()
