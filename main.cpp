@@ -150,6 +150,28 @@ bool body_size_negative_nums()
 
 
 
+bool if_is_green()
+{
+  Candle first = {10, 0, 0, 25};
+  return first.is_green();
+}
+
+bool is_not_green()
+{
+  Candle second = {25.002, 0, 0, 3.2345};
+
+  return !second.is_green();
+}
+
+bool open_close_if_is_green()
+{
+  Candle third = {10, 0, 0, 10};
+  return !third.is_green();
+}
+
+
+
+
 void initTests()
 {
   tests.push_back(body_contains_isgreen);
@@ -167,6 +189,10 @@ void initTests()
   tests.push_back(body_size_green);
   tests.push_back(body_size_red);
   tests.push_back(body_size_negative_nums);
+
+  tests.push_back(if_is_green);
+  tests.push_back(is_not_green);
+  tests.push_back(open_close_if_is_green);
 
 }
 
