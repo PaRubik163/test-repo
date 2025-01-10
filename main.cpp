@@ -171,6 +171,25 @@ bool open_close_if_is_green()
 
 
 
+bool if_is_red()
+{
+  Candle first = {10, 0, 0,-30.2};
+  return first.is_red();
+}
+
+bool is_not_red()
+{
+  Candle second = {-10, 0, 0, 20};
+  return !second.is_red();
+}
+
+bool open_close_if_is_red()
+{
+  Candle third = {-24.99999, 0, 0, -24.99999};
+  return !third.is_red();
+}
+
+
 
 void initTests()
 {
@@ -194,6 +213,9 @@ void initTests()
   tests.push_back(is_not_green);
   tests.push_back(open_close_if_is_green);
 
+  tests.push_back(if_is_red);
+  tests.push_back(is_not_red);
+  tests.push_back(open_close_if_is_red);
 }
 
 int launchTests()
