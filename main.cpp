@@ -2,41 +2,47 @@
 #include <functional>
 #include <iostream>
 
+#include "candle.h"
 #include "tests.h"
 
 //массив всех тестов, который мы заполняем в функции initTests
 static std::vector<std::function<bool()>> tests;
 
-//тест 1
-bool test1()
+bool body_contains_isgreen()
 {
-  //пример какого-то теста
-  return 42 == (41 + 1); //passed
+    Candle first = {21, 0, 0, 40};
+
+    return first.body_contains(21)
+     && first.body_contains(37) 
+     && first.body_contains(40);
 }
 
-//тест 2
-bool test2()
+bool body_contains_isred()
 {
-  //пример какого-то теста
-  return 42 != (41 + 1); //failed
+  Candle second = {40, 0 , 0 , 21};
+
+  return second.body_contains(40)
+  && second.body_contains(34)
+  && second.body_contains(21);
 }
 
-//тест 3
-bool test3()
+bool body_contains_not_in_green()
 {
-  Candle candle{ 0.0, 3.0, 3.0, 3.0 };
+  Candle third = {13, 0, 0, 20};
 
-  //пример какого-то теста
-  return candle.high == 3.0;
+  return !third.body_contains(12.8)
+  && !third.body_contains(21.2)
+  && !third.body_contains(1);
 }
+
+
 
 void initTests()
 {
-  tests.push_back(test1);
-  tests.push_back(test2);
-  tests.push_back(test3);
-  //tests.push_back(test4);
-  //tests.push_back(test5);
+  tests.push_back(body_contains_isgreen);
+  tests.push_back(body_contains_isred);
+  tests.push_back(body_contains_not_in_green);
+
 }
 
 int launchTests()
@@ -68,5 +74,7 @@ int launchTests()
 int main()
 {
   initTests();
-  return launchTests();
+  launchTests();
+
+  return 0;
 }
